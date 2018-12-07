@@ -1,19 +1,18 @@
-/**
- * Created by Administrator on 2018/12/3.
- */
 const express = require('express');
+const router = require('./routers');
 const db = require('./db');
-const router = require('./routers/index');
-
 const app = express();
+/*
+ nodemon工具，帮助我们自动编译服务器代码
+ npm i nodemon -g
+ */
 
 (async () => {
   await db;
   app.use(router);
 })();
 
-
-app.listen('4000', err => {
-  if (!err) console.log('服务器连接成功，请访问:http://localhost:4000');
+app.listen(4000, err => {
+  if (!err) console.log('服务器启动成功了~请访问：http://localhost:4000');
   else console.log(err);
 });
